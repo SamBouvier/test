@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UE8 · Système d'information de gestion — DCG</title>
+<style>
+  :root{
+    --bg: #f6f6f5;
+    --panel: #ffffff;
+    --ink: #1c1c1a;
+    --ink-soft: #55564f;
+    --line: #dcdcd8;
+    --line-soft: #ebebe8;
+    --accent: #7d7f74;
+  }
+
+  *{ box-sizing: border-box; margin:0; padding:0; }
+
+  html{ -webkit-font-smoothing: antialiased; }
+
+  body{
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "Inter", "Helvetica Neue", Arial, sans-serif;
+    line-height: 1.5;
+  }
+
+  h1, h2, h3, .serif{
+    font-family: "Iowan Old Style", "Palatino Linotype", "Georgia", serif;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+  }
+
+  a{ color: inherit; }
+
+  .wrap{
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 0 40px;
+  }
+
+  /* ---------- top bar ---------- */
+  .topbar{
+    border-bottom: 1px solid var(--line-soft);
+  }
+  .topbar .wrap{
+    display:flex;
+    align-items:center;
+    justify-content: space-between;
+    height: 76px;
+  }
+  .brand{
+    font-size: 15px;
+    letter-spacing: 0.02em;
+  }
+  .brand b{ font-weight: 600; }
+  .diploma{
+    font-size: 13px;
+    color: var(--ink-soft);
+  }
+
+  /* ---------- hero ---------- */
+  .hero{
+    padding: 88px 0 96px;
+    border-bottom: 1px solid var(--line-soft);
+  }
+  .hero .wrap{
+    display: grid;
+    grid-template-columns: 1.05fr 0.95fr;
+    gap: 64px;
+    align-items: center;
+  }
+  .hero-eyebrow{
+    font-size: 14px;
+    color: var(--ink-soft);
+    margin-bottom: 22px;
+  }
+  .hero h1{
+    font-size: 46px;
+    line-height: 1.12;
+    max-width: 11.5ch;
+  }
+  .hero p{
+    margin-top: 26px;
+    max-width: 42ch;
+    color: var(--ink-soft);
+    font-size: 16px;
+  }
+  .hero-meta{
+    display:flex;
+    gap: 32px;
+    margin-top: 40px;
+    padding-top: 28px;
+    border-top: 1px solid var(--line-soft);
+  }
+  .hero-meta div{ font-size: 13px; color: var(--ink-soft); }
+  .hero-meta strong{
+    display:block;
+    font-family: "Iowan Old Style", Georgia, serif;
+    font-size: 22px;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 2px;
+  }
+
+  .hero-art{
+    aspect-ratio: 1 / 0.82;
+    border: 1px solid var(--line);
+    background: var(--panel);
+  }
+  .hero-art svg{ width:100%; height:100%; display:block; }
+
+  /* ---------- parts ---------- */
+  .parts{
+    padding: 96px 0 110px;
+  }
+  .parts-head{
+    display:flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 48px;
+  }
+  .parts-head h2{
+    font-size: 28px;
+  }
+  .parts-head span{
+    font-size: 13px;
+    color: var(--ink-soft);
+  }
+
+  .part{
+    display:grid;
+    grid-template-columns: 90px 1fr;
+    gap: 32px;
+    padding: 36px 0;
+    border-top: 1px solid var(--line-soft);
+  }
+  .part:last-child{ border-bottom: 1px solid var(--line-soft); }
+
+  .part-num{
+    font-family: "Iowan Old Style", Georgia, serif;
+    font-size: 32px;
+    color: var(--accent);
+    line-height: 1;
+  }
+  .part-body h3{
+    font-size: 21px;
+    margin-bottom: 10px;
+  }
+  .part-body p{
+    color: var(--ink-soft);
+    font-size: 15px;
+    max-width: 62ch;
+  }
+  .part-tags{
+    margin-top: 16px;
+    display:flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .part-tags span{
+    font-size: 12px;
+    color: var(--ink-soft);
+    border: 1px solid var(--line);
+    padding: 5px 11px;
+  }
+
+  /* ---------- footer ---------- */
+  footer{
+    border-top: 1px solid var(--line-soft);
+    padding: 28px 0;
+  }
+  footer .wrap{
+    display:flex;
+    justify-content: space-between;
+    font-size: 13px;
+    color: var(--ink-soft);
+  }
+
+  @media (max-width: 860px){
+    .wrap{ padding: 0 24px; }
+    .hero .wrap{ grid-template-columns: 1fr; }
+    .hero{ padding: 56px 0 64px; }
+    .hero h1{ font-size: 34px; max-width: none; }
+    .hero-art{ order: -1; }
+    .part{ grid-template-columns: 1fr; gap: 10px; }
+    .parts-head{ flex-direction: column; align-items: flex-start; gap: 8px; }
+  }
+</style>
+</head>
+<body>
+
+  <div class="topbar">
+    <div class="wrap">
+      <div class="brand"><b>UE8</b> · Systèmes d'information de gestion</div>
+      <div class="diploma">DCG — Diplôme de Comptabilité et de Gestion</div>
+    </div>
+  </div>
+
+  <section class="hero">
+    <div class="wrap">
+      <div>
+        <div class="hero-eyebrow">Programme officiel de l'unité d'enseignement 8</div>
+        <h1>Comprendre et piloter le système d'information</h1>
+        <p>Le SI relie les ressources, les données et les processus d'une organisation. Cette unité aborde son fonctionnement, sa structuration, sa contribution à la performance et les enjeux de sécurité et de durabilité qui l'entourent.</p>
+
+        <div class="hero-meta">
+          <div><strong>200 h</strong>Volume de formation</div>
+          <div><strong>4 h</strong>Durée de l'épreuve</div>
+          <div><strong>14</strong>Crédits européens</div>
+        </div>
+      </div>
+
+      <div class="hero-art">
+        <svg viewBox="0 0 480 400" xmlns="http://www.w3.org/2000/svg">
+          <!-- connections -->
+          <g stroke="#c9c9c4" stroke-width="1">
+            <line x1="120" y1="120" x2="240" y2="90"/>
+            <line x1="120" y1="120" x2="90" y2="230"/>
+            <line x1="240" y1="90" x2="360" y2="130"/>
+            <line x1="240" y1="90" x2="230" y2="210"/>
+            <line x1="90" y1="230" x2="230" y2="210"/>
+            <line x1="90" y1="230" x2="130" y2="330"/>
+            <line x1="230" y1="210" x2="360" y2="130"/>
+            <line x1="230" y1="210" x2="330" y2="280"/>
+            <line x1="360" y1="130" x2="330" y2="280"/>
+            <line x1="130" y1="330" x2="330" y2="280"/>
+            <line x1="130" y1="330" x2="230" y2="210"/>
+          </g>
+          <!-- nodes -->
+          <g fill="#f6f6f5" stroke="#1c1c1a" stroke-width="1.4">
+            <circle cx="120" cy="120" r="7"/>
+            <circle cx="240" cy="90" r="5"/>
+            <circle cx="360" cy="130" r="6"/>
+            <circle cx="90" cy="230" r="5"/>
+            <circle cx="230" cy="210" r="9"/>
+            <circle cx="330" cy="280" r="6"/>
+            <circle cx="130" cy="330" r="5"/>
+          </g>
+          <!-- central node accent -->
+          <circle cx="230" cy="210" r="3" fill="#1c1c1a"/>
+
+          <!-- small data marks near a couple of nodes -->
+          <g stroke="#c9c9c4" stroke-width="1">
+            <rect x="352" y="150" width="16" height="16" fill="none"/>
+            <rect x="352" y="170" width="16" height="10" fill="none"/>
+          </g>
+          <g stroke="#c9c9c4" stroke-width="1">
+            <path d="M113 340 h34" />
+            <path d="M113 348 h24" />
+          </g>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <section class="parts">
+    <div class="wrap">
+      <div class="parts-head">
+        <h2>Les quatre parties du programme</h2>
+        <span>Référentiel UE8 — progression du général au spécifique</span>
+      </div>
+
+      <div class="part">
+        <div class="part-num">01</div>
+        <div class="part-body">
+          <h3>Le système d'information dans son environnement</h3>
+          <p>Les ressources, les acteurs et l'infrastructure du SI, ainsi que les choix organisationnels nécessaires à son adaptation. Le socle des rôles et fonctions du SI au sein de l'organisation.</p>
+          <div class="part-tags">
+            <span>Espace numérique de travail</span>
+            <span>Réseaux et Internet</span>
+            <span>Transformation numérique</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="part">
+        <div class="part-num">02</div>
+        <div class="part-body">
+          <h3>La gestion des données du système d'information</h3>
+          <p>Analyse, structuration et manipulation de l'information à travers les bases de données et le tableur, avec un accent sur la qualité et la fiabilité des données de gestion.</p>
+          <div class="part-tags">
+            <span>Bases de données · SQL</span>
+            <span>Tableur</span>
+            <span>Programmation et automatisation</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="part">
+        <div class="part-num">03</div>
+        <div class="part-body">
+          <h3>Le système d'information et la performance des processus</h3>
+          <p>Modélisation des processus organisationnels, articulation entre processus et données, usage des progiciels de gestion et impact des technologies émergentes.</p>
+          <div class="part-tags">
+            <span>Modélisation des processus</span>
+            <span>Progiciels métiers</span>
+            <span>Technologies émergentes</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="part">
+        <div class="part-num">04</div>
+        <div class="part-body">
+          <h3>La sécurité et la durabilité du système d'information</h3>
+          <p>Une approche responsable et sécurisée du SI : enjeux juridiques et réglementaires, risques liés à la cybersécurité et durabilité environnementale des ressources numériques.</p>
+          <div class="part-tags">
+            <span>Cadre juridique</span>
+            <span>Cybersécurité</span>
+            <span>Durabilité numérique</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">
+      <span>DCG · UE8</span>
+      <span>Système d'information de gestion</span>
+    </div>
+  </footer>
+
+</body>
+</html>
